@@ -17,7 +17,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 @ComponentScan(basePackages="com.niit")
 public class AppContext {
 	
-	@Bean
+	@Bean("dataSource")
 	public DataSource geth2DataSource()
 	{
 		BasicDataSource dataSource=new BasicDataSource();

@@ -14,7 +14,7 @@ public class User {
 	private String username;
 	private String password;
 	private String name;
-	private String adress;
+	private String address;
 	private String role;
 	private boolean enabled;
 
@@ -54,12 +54,12 @@ public class User {
 		this.name = name;
 	}
 
-	public String getAdress() {
-		return adress;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(String adress) {
+		this.address = adress;
 	}
 
 	public String getRole() {
