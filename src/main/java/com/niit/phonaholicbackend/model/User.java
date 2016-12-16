@@ -1,9 +1,12 @@
 package com.niit.phonaholicbackend.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -17,6 +20,17 @@ public class User {
 	private String address;
 	private String role;
 	private boolean enabled;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "cartid")
+	private Cart cart;
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 
 	public User() {
 

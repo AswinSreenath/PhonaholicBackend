@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.niit.phonaholicbackend.model.Cart;
 import com.niit.phonaholicbackend.model.User;
 
 @Repository("userDAO")
@@ -19,14 +20,17 @@ public class UserDAOImpl implements UserDAO {
 	@Autowired
 	SessionFactory sessionFactory;
 
-	
 	public void addUser(User user) {
 		Session session = sessionFactory.getCurrentSession();
-		session.persist(user);
+		user.setEnabled(true);
+		user.setRole("ROLE_USER");
+		Cart cart = new Cart();
+		cart.setUser(user);
+		user.setCart(cart);
+		session.saveOrUpdate(user);
 
 	}
 
-	
 	public void updateUser(User user) {
 
 		Session session = sessionFactory.getCurrentSession();
@@ -34,7 +38,6 @@ public class UserDAOImpl implements UserDAO {
 
 	}
 
-	
 	public void deleteUser(int userid) {
 
 		Session session = sessionFactory.getCurrentSession();
@@ -43,22 +46,19 @@ public class UserDAOImpl implements UserDAO {
 
 	}
 
-	
 	public User getUserById(int userid) {
-		Session session=sessionFactory.getCurrentSession();
-		User user=(User) session.createQuery("from user where userid="+userid).getSingleResult();
+		Session session = sessionFactory.getCurrentSession();
+		User user = (User) session.createQuery("from user where userid=" + userid).getSingleResult();
 		return user;
-		
+
 	}
 
-	
 	public User getUserByUsername(String username) {
-		Session session=sessionFactory.getCurrentSession();
-		User user=(User) session.createQuery("from user where username="+username).getSingleResult();
+		Session session = sessionFactory.getCurrentSession();
+		User user = (User) session.createQuery("from user where username='" + username+"'").getSingleResult();
 		return user;
 	}
 
-	
 	public List<User> listUsers() {
 		Session session = sessionFactory.getCurrentSession();
 		List<User> users = session.createQuery("from user").getResultList();

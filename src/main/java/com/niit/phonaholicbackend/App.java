@@ -22,6 +22,14 @@ public class App
         ProductDAO productDAO=(ProductDAO)context.getBean("productDAO");
         UserDAO userDAO=(UserDAO) context.getBean("userDAO");
         
+        User user=new User();
+        user.setName("sura");
+        user.setPassword("sura");
+        user.setUsername("sura");
+        user.setAddress("ulli");
+        
+        userDAO.addUser(user);
+        
         Product product=new Product();
         product.setName("HTC");
         product.setBrand("HTC");

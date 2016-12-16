@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class Product {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private int pid;
 	
 	@Size(min=2,max=10,message="Size will be between 2 to 10 characters")
 	private String name;
@@ -36,11 +36,11 @@ public class Product {
 		super();
 		
 	}
-	public int getId() {
-		return id;
+	public int getPid() {
+		return pid;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setPid(int pid) {
+		this.pid = pid;
 	}
 	public String getName() {
 		return name;
