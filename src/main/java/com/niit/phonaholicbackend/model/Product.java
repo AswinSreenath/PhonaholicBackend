@@ -5,10 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
+
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
@@ -25,7 +26,7 @@ public class Product {
 	private String category;
 	@NotEmpty(message="The description cannot be empty")
 	private String desc;
-	@NotNull(message="The price cannot be empty")
+	@Range(min=1,message="The price cannot be empty")
 	private double price;
 	
 	@Transient

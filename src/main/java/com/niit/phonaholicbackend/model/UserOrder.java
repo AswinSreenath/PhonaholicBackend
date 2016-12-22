@@ -1,42 +1,39 @@
 package com.niit.phonaholicbackend.model;
 
-import java.util.List;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Cart {
+public class UserOrder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int cartid;
-	@OneToMany(fetch=FetchType.EAGER)
-	@JoinColumn(name = "itemid")
-	private List<Item> items;
+	private int userorderid;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "cartid")
+	private Cart cart;
 	@OneToOne
 	@JoinColumn(name = "userid")
 	private User user;
 
-	public int getCartid() {
-		return cartid;
+	public int getUserorderid() {
+		return userorderid;
 	}
 
-	public void setCartid(int cartid) {
-		this.cartid = cartid;
+	public void setUserorderid(int userorderid) {
+		this.userorderid = userorderid;
 	}
 
-	public List<Item> getItems() {
-		return items;
+	public Cart getCart() {
+		return cart;
 	}
 
-	public void setItems(List<Item> items) {
-		this.items = items;
+	public void setCart(Cart cart) {
+		this.cart = cart;
 	}
 
 	public User getUser() {

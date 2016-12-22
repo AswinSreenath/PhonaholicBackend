@@ -15,7 +15,10 @@ public class Item {
 	@ManyToOne
 	@JoinColumn(name = "pid")
 	private Product product;
+	
+	
 	private int quantity;
+	
 	private double itemtotal;
 	@ManyToOne
 	@JoinColumn(name = "cartid")

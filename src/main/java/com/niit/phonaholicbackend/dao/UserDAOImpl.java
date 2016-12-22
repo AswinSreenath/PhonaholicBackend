@@ -41,27 +41,27 @@ public class UserDAOImpl implements UserDAO {
 	public void deleteUser(int userid) {
 
 		Session session = sessionFactory.getCurrentSession();
-		User user = (User) session.createQuery("from user where userid=" + userid).getSingleResult();
+		User user = (User) session.createQuery("from User where userid=" + userid).getSingleResult();
 		session.delete(user);
 
 	}
 
 	public User getUserById(int userid) {
 		Session session = sessionFactory.getCurrentSession();
-		User user = (User) session.createQuery("from user where userid=" + userid).getSingleResult();
+		User user = (User) session.createQuery("from User where userid=" + userid).getSingleResult();
 		return user;
 
 	}
 
 	public User getUserByUsername(String username) {
 		Session session = sessionFactory.getCurrentSession();
-		User user = (User) session.createQuery("from user where username='" + username+"'").getSingleResult();
+		User user = (User) session.createQuery("from User where username='" + username+"'").getSingleResult();
 		return user;
 	}
 
 	public List<User> listUsers() {
 		Session session = sessionFactory.getCurrentSession();
-		List<User> users = session.createQuery("from user").getResultList();
+		List<User> users = session.createQuery("from User").getResultList();
 		return users;
 	}
 

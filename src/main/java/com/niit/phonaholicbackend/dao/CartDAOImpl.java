@@ -19,12 +19,14 @@ public class CartDAOImpl implements CartDAO {
 	public void addCart(Cart cart) {
 		Session session = sessionFactory.getCurrentSession();
 		session.persist(cart);
+		session.flush();
 
 	}
 
 	public void updateCart(Cart cart) {
 		Session session = sessionFactory.getCurrentSession();
 		session.update(cart);
+		session.flush();
 
 	}
 

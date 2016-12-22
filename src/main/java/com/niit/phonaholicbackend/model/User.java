@@ -8,7 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.springframework.context.annotation.Scope;
+
 @Entity
+
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
