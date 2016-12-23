@@ -26,6 +26,9 @@ public class User {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cartid")
 	private Cart cart;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "useraddressid")
+	ShippingAdress shippingaddress;
 
 	public Cart getCart() {
 		return cart;
@@ -93,6 +96,14 @@ public class User {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public ShippingAdress getShippingaddress() {
+		return shippingaddress;
+	}
+
+	public void setShippingaddress(ShippingAdress shippingaddress) {
+		this.shippingaddress = shippingaddress;
 	}
 
 }
