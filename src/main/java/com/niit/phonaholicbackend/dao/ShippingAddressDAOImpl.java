@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.niit.phonaholicbackend.model.ShippingAdress;
-@Repository("shippingaddressDAO")
+import com.niit.phonaholicbackend.model.ShippingAddress;
+@Repository("shippingAddressDAO")
 @Transactional
 @EnableTransactionManagement
 
@@ -19,9 +19,9 @@ public class ShippingAddressDAOImpl implements ShippingAddressDAO{
 	SessionFactory sessionFactory;
 
 	@Override
-	public void addshippingaddress(ShippingAdress shippingaddress) {
+	public void addshippingaddress(ShippingAddress shippingAddress) {
 		Session session=sessionFactory.getCurrentSession();
-		session.saveOrUpdate(shippingaddress);
+		session.saveOrUpdate(shippingAddress);
 		
 		
 	}
@@ -33,17 +33,17 @@ public class ShippingAddressDAOImpl implements ShippingAddressDAO{
 	}
 
 	@Override
-	public void removeshippingaddress(ShippingAdress shippingaddress) {
+	public void removeshippingaddress(ShippingAddress shippingAddress) {
 		Session session=sessionFactory.getCurrentSession();
-		session.delete(shippingaddress);
+		session.delete(shippingAddress);
 		
 	}
 
 	@Override
-	public ShippingAdress getShippingAddressById(int useraddressid) {
+	public ShippingAddress getShippingAddressById(int useraddressid) {
 		Session session=sessionFactory.getCurrentSession();
-		ShippingAdress shippingadress=(ShippingAdress) session.createQuery("from ShippingAddress where useraddressid="+useraddressid).getSingleResult();
-		return shippingadress;
+		ShippingAddress shippingAdress=(ShippingAddress) session.createQuery("from ShippingAddress where useraddressid="+useraddressid).getSingleResult();
+		return shippingAdress;
 	}
 
 }

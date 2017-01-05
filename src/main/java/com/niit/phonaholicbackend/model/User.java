@@ -1,5 +1,7 @@
 package com.niit.phonaholicbackend.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +14,7 @@ import org.springframework.context.annotation.Scope;
 
 @Entity
 
-public class User {
+public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userid;
@@ -22,13 +24,13 @@ public class User {
 	private String name;
 	private String address;
 	private String role;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "useraddressid")
+	ShippingAddress shippingAddress;
 	private boolean enabled;
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cartid")
 	private Cart cart;
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "useraddressid")
-	ShippingAdress shippingaddress;
 
 	public Cart getCart() {
 		return cart;
@@ -98,12 +100,12 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	public ShippingAdress getShippingaddress() {
-		return shippingaddress;
+	public ShippingAddress getShippingAddress() {
+		return shippingAddress;
 	}
 
-	public void setShippingaddress(ShippingAdress shippingaddress) {
-		this.shippingaddress = shippingaddress;
+	public void setShippingAddress(ShippingAddress shippingAddress) {
+		this.shippingAddress = shippingAddress;
 	}
 
 }

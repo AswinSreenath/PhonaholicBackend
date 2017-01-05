@@ -1,15 +1,15 @@
 package com.niit.phonaholicbackend.dao;
 
-import com.niit.phonaholicbackend.model.ShippingAdress;
+import com.niit.phonaholicbackend.model.ShippingAddress;
 
 public interface ShippingAddressDAO {
 
-	public void addshippingaddress(ShippingAdress shippingaddress);
+	public void addshippingaddress(ShippingAddress shippingAddress);
 
 	public void updateshippingaddress();
 
-	public void removeshippingaddress(ShippingAdress shippingaddress);
+	public void removeshippingaddress(ShippingAddress shippingAddress);
 
-	public ShippingAdress getShippingAddressById(int useraddressid);
+	public ShippingAddress getShippingAddressById(int useraddressid);
 
 }

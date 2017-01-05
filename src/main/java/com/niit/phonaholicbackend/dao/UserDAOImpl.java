@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.phonaholicbackend.model.Cart;
-import com.niit.phonaholicbackend.model.ShippingAdress;
+import com.niit.phonaholicbackend.model.ShippingAddress;
 import com.niit.phonaholicbackend.model.User;
 
 @Repository("userDAO")
@@ -28,9 +28,7 @@ public class UserDAOImpl implements UserDAO {
 		Cart cart = new Cart();
 		cart.setUser(user);
 		user.setCart(cart);
-		ShippingAdress shippingaddress=new ShippingAdress();
-		shippingaddress.setUser(user);
-		user.setShippingaddress(shippingaddress);
+		
 		session.saveOrUpdate(user);
 
 	}
