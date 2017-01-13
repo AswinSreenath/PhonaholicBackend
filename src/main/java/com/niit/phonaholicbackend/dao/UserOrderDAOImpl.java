@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.phonaholicbackend.model.UserOrder;
 
-@Repository("userorderDAO")
+@Repository("userOrderDAO")
 @Transactional
 @EnableTransactionManagement
 public class UserOrderDAOImpl implements UserOrderDAO {
@@ -20,6 +20,13 @@ public class UserOrderDAOImpl implements UserOrderDAO {
 		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(userOrder);
 
+	}
+
+	
+	public UserOrder getUserOrderById(int userorderid) {
+		Session session=sessionFactory.getCurrentSession();
+		UserOrder userOrder=(UserOrder)session.createQuery("from UserOrder where userorderid="+userorderid).getSingleResult();
+		return userOrder;
 	}
 
 }
