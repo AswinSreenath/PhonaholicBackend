@@ -3,6 +3,7 @@ package com.niit.phonaholicbackend.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,8 +18,8 @@ public class Cart implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cartid;
-	@OneToMany(fetch=FetchType.EAGER)
-	@JoinColumn(name = "itemid")
+	@OneToMany(fetch=FetchType.EAGER,mappedBy="cart",cascade=CascadeType.ALL)
+	//@JoinColumn(name = "itemid")
 	private List<Item> items;
 	@OneToOne
 	@JoinColumn(name = "userid")

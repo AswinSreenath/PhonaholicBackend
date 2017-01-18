@@ -22,7 +22,7 @@ public class ItemDAOImpl implements ItemDAO {
 	
 	public void addItem(Item item) {
 		Session session=sessionFactory.getCurrentSession();
-		session.save(item);
+		session.saveOrUpdate(item);
 		
 		
 	}
@@ -30,7 +30,7 @@ public class ItemDAOImpl implements ItemDAO {
 	
 	public void removeItem(Item item) {
 		Session session = sessionFactory.getCurrentSession();
-		session.delete(item);
+		session.createQuery("delete from Item where itemid="+item.getItemid()).executeUpdate();
 
 	}
 
@@ -43,11 +43,8 @@ public class ItemDAOImpl implements ItemDAO {
 
 	
 	public void removeAllItem(Cart cart) {
-		List<Item> items=cart.getItems();
-		for(Item item:items)
-		{
-			removeItem(item);
-		}
+		Session session=sessionFactory.getCurrentSession();
+		session.createQuery("delete from Item where cartid="+cart.getCartid()).executeUpdate();
 		
 	}
 

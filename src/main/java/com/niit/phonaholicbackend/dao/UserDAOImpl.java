@@ -28,6 +28,9 @@ public class UserDAOImpl implements UserDAO {
 		Cart cart = new Cart();
 		cart.setUser(user);
 		user.setCart(cart);
+		ShippingAddress shippingAddress=new ShippingAddress();
+		shippingAddress.setUser(user);
+		user.setShippingAddress(shippingAddress);
 		
 		session.saveOrUpdate(user);
 

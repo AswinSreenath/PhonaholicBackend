@@ -8,41 +8,41 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.phonaholicbackend.model.ShippingAddress;
+import com.niit.phonaholicbackend.model.User;
+
 @Repository("shippingAddressDAO")
 @Transactional
 @EnableTransactionManagement
 
-
-
-public class ShippingAddressDAOImpl implements ShippingAddressDAO{
+public class ShippingAddressDAOImpl implements ShippingAddressDAO {
 	@Autowired
 	SessionFactory sessionFactory;
+	@Autowired
+	UserDAO userDAO;
 
-	@Override
-	public void addshippingaddress(ShippingAddress shippingAddress) {
-		Session session=sessionFactory.getCurrentSession();
-		session.saveOrUpdate(shippingAddress);
+	public void addshippingaddress(User user) {
 		
-		
+		Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(user.getShippingAddress());
+
 	}
 
-	@Override
-	public void updateshippingaddress() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void updateshippingaddress(ShippingAddress shippingAddress) {
+
+	} 
 
 	@Override
 	public void removeshippingaddress(ShippingAddress shippingAddress) {
-		Session session=sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		session.delete(shippingAddress);
-		
+
 	}
 
 	@Override
 	public ShippingAddress getShippingAddressById(int useraddressid) {
-		Session session=sessionFactory.getCurrentSession();
-		ShippingAddress shippingAdress=(ShippingAddress) session.createQuery("from ShippingAddress where useraddressid="+useraddressid).getSingleResult();
+		Session session = sessionFactory.getCurrentSession();
+		ShippingAddress shippingAdress = (ShippingAddress) session
+				.createQuery("from ShippingAddress where useraddressid=" + useraddressid).getSingleResult();
 		return shippingAdress;
 	}
 

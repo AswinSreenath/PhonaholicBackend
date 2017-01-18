@@ -2,6 +2,7 @@ package com.niit.phonaholicbackend.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +23,7 @@ public class Item implements Serializable{
 	private int quantity;
 	
 	private double itemtotal;
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "cartid")
 	private Cart cart;
 

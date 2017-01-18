@@ -13,7 +13,6 @@ import javax.persistence.OneToOne;
 import org.springframework.context.annotation.Scope;
 
 @Entity
-
 public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

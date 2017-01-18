@@ -29,4 +29,14 @@ public class UserOrderDAOImpl implements UserOrderDAO {
 		return userOrder;
 	}
 
+
+	
+	public void remOrder(int userorderid) {
+		
+		Session session=sessionFactory.getCurrentSession();
+		session.createQuery("delete from UserOrder where userorderid="+userorderid ).executeUpdate();
+		
+		
+	}
+
 }
